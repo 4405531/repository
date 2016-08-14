@@ -17,7 +17,7 @@
 ## 初始化
 
 - 创建名为 torrent的库
-- 执行mysql.sql中的sql语句
+- 执行[mysql.sql](https://github.com/btlike/repository/blob/master/mysql.sql)中的sql语句
 
 ### 安装
 `go get github.com/btlike/repository`

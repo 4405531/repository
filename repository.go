@@ -15,6 +15,7 @@ type Torrent struct {
 	Infohash   string
 	Name       string
 	Length     int64
+	Heat       int64
 	FileCount  int64
 	Files      []File
 	CreateTime time.Time

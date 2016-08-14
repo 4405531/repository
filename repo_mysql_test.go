@@ -11,7 +11,7 @@ var (
 
 func initMysqlRepo(t *testing.T) {
 	conn := "root:@tcp(127.0.0.1:3306)/torrent?charset=utf8&parseTime=True&loc=Local"
-	repo, err := NewMysqlRepository(conn)
+	repo, err := NewMysqlRepository(conn, 128, 128)
 	if err != nil {
 		t.Fatal(err)
 	}

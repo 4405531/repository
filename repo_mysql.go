@@ -12,12 +12,13 @@ import (
 )
 
 //NewMysqlRepository 新建mysql数据仓库
-func NewMysqlRepository(conn string) (repo *MysqlRepo, err error) {
+func NewMysqlRepository(conn string, maxIdleConns int, maxOpenConns int) (repo *MysqlRepo, err error) {
 	db, err := gorm.Open("mysql", conn)
 	if err != nil {
 		return
 	}
-	db.LogMode(true)
+	db.DB().SetMaxIdleConns(maxIdleConns)
+	db.DB().SetMaxOpenConns(maxOpenConns)
 	return &MysqlRepo{db: db}, err
 }
 
@@ -39,6 +40,7 @@ func (p *MysqlRepo) GetTorrentByInfohash(infohash string) (t Torrent, err error)
 	if len(trt.Data) > 0 {
 		json.Unmarshal([]byte(trt.Data), &t)
 	}
+
 	return
 }
 

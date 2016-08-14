@@ -17,6 +17,7 @@ func NewMysqlRepository(conn string, maxIdleConns int, maxOpenConns int) (repo *
 	if err != nil {
 		return
 	}
+	db.LogMode(false)
 	db.DB().SetMaxIdleConns(maxIdleConns)
 	db.DB().SetMaxOpenConns(maxOpenConns)
 	return &MysqlRepo{db: db}, err

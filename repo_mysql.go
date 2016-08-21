@@ -63,8 +63,8 @@ func (p *MysqlRepo) BatchGetTorrentByInfohash(infohash []string) (ts []Torrent, 
 		}
 		for _, item := range trt {
 			var t Torrent
-			err = json.Unmarshal([]byte(item.Data), &t)
-			if err == nil {
+			info := json.Unmarshal([]byte(item.Data), &t)
+			if info == nil {
 				ts = append(ts, t)
 			}
 		}
